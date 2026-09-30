@@ -2,10 +2,10 @@ package edu.dsu.scd.lms;
 
 import java.time.Clock;
 import java.time.Instant;
-import java.time.ZoneOffset;
 import java.time.LocalDate;
+import java.time.ZoneOffset;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class LibraryTest {
     private final Clock clock = Clock.fixed(Instant.parse("2026-01-20T00:00:00Z"), ZoneOffset.UTC);
@@ -26,7 +26,8 @@ class LibraryTest {
     @Test void returnCalculatesLateFeeAndRestoresCopy() {
         Library library = new Library(clock);
         Book b = new Book("T", "A", "I1", 1);
-        library.addBook(b); library.registerMember(new Member("A", "M1"));
+        library.addBook(b);
+        library.registerMember(new Member("A", "M1"));
         Loan loan = library.borrowBook("I1", "M1");
         assertEquals(10, library.returnBook(loan, LocalDate.of(2026, 2, 4)));
         assertEquals(1, b.getAvailableCopies());
