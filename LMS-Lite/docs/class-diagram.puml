@@ -1,0 +1,43 @@
+@startuml
+class Book {
+  - title : String
+  - author : String
+  - isbn : String
+  - totalCopies : int
+  - availableCopies : int
+  + borrowCopy()
+  + returnCopy()
+  + hasAvailableCopy()
+}
+class Member {
+  - name : String
+  - memberId : String
+}
+class Loan {
+  - book : Book
+  - member : Member
+  - borrowDate : LocalDate
+  - dueDate : LocalDate
+  - returned : boolean
+  + markReturned()
+  + isOverdue()
+  + lateFee()
+}
+class Library {
+  - books : List<Book>
+  - members : List<Member>
+  - loans : List<Loan>
+  - clock : Clock
+  + addBook()
+  + registerMember()
+  + searchBooks()
+  + borrowBook()
+  + returnBook()
+  + overdueLoans()
+}
+Library o-- Book
+Library o-- Member
+Library o-- Loan
+Loan --> Book
+Loan --> Member
+@enduml
