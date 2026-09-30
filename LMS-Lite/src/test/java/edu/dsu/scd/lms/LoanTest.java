@@ -2,7 +2,9 @@ package edu.dsu.scd.lms;
 
 import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class LoanTest {
     private final Book book = new Book("T", "A", "I", 1);
